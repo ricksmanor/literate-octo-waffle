@@ -4,10 +4,10 @@ import pandas as pd
 import datetime
 
 # CONFIG
-DOMAIN = "example.com"  # Change to your Trustpilot domain
+DOMAIN = "ukstoragecompany.co.uk"  # Change to your Trustpilot domain
 PAGES_TO_SCRAPE = 27     # Number of pages of reviews to grab
 
-BASE_URL = f"https://uk.trustpilot.com/review/ukstoragecompany.co.uk/{DOMAIN}?page={{}}"
+BASE_URL = f"https://www.trustpilot.com/review/{DOMAIN}?page={{}}"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 all_reviews = []
