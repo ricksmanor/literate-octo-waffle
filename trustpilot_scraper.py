@@ -18,7 +18,7 @@ for page in range(1, PAGES_TO_SCRAPE + 1):
     r = requests.get(url, headers=HEADERS)
     soup = BeautifulSoup(r.text, "html.parser")
 
-    for review in soup.select("section.styles_reviewCard__hcAvl"):
+    for review in soup.select("section.styles_reviewCard__Qwhpy"):
         title = review.select_one("h2").get_text(strip=True) if review.select_one("h2") else ""
         body = review.select_one("p").get_text(strip=True) if review.select_one("p") else ""
         rating_tag = review.select_one("div.star-rating img")
