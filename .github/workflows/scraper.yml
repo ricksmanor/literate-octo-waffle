@@ -1,0 +1,32 @@
+name: Trustpilot Scraper
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # Run daily at 03:00 UTC
+  workflow_dispatch:    # Allow manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python trustpilot_scraper.py
+
+      - name: Commit and push updated file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.xlsx
+          git commit -m "Update reviews"
+          git push
